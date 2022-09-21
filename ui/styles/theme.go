@@ -7,7 +7,7 @@ import (
 
 var (
 	SingleRuneWidth    = 4
-	MainContentPadding = 1
+	MainContentPadding = 12
 )
 
 type Theme struct {
