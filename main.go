@@ -1,26 +1,50 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"log"
+	"os"
 
-	"github.com/cli/go-gh"
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/muesli/termenv"
 )
 
-func main() {
-	fmt.Println("hi world, this is the gh-ghas-viewer extension!")
-	client, err := gh.RESTClient(nil)
-	if err != nil {
-		fmt.Println(err)
-		return
+func createModel(debug bool) (ui.Model, *os.File) {
+	var loggerFile *os.File
+	var err error
+
+	if debug {
+		loggerFile, err = tea.LogToFile("debug.log", "debug")
+		if err != nil {
+			fmt.Println("Error setting up logger")
+		}
 	}
-	response := struct {Login string}{}
-	err = client.Get("user", &response)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Printf("running as %s\n", response.Login)
+
+	return ui.NewModel(), loggerFile
 }
 
-// For more examples of using go-gh, see:
-// https://github.com/cli/go-gh/blob/trunk/example_gh_test.go
+func main() {
+	debug := flag.Bool(
+		"debug",
+		false,
+		"passing this flag will allow writing debug output to debug.log",
+	)
+	flag.Parse()
+
+	// see https://github.com/charmbracelet/lipgloss/issues/73
+	markdown.InitializeMarkdownStyle(termenv.HasDarkBackground())
+
+	model, logger := createModel(*debug)
+	if logger != nil {
+		defer logger.Close()
+	}
+
+	p := tea.NewProgram(
+		model,
+		tea.WithAltScreen(),
+	)
+	if err := p.Start(); err != nil {
+		log.Fatal(err)
+	}
+}
