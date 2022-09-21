@@ -6,6 +6,9 @@ import (
 	"log"
 	"os"
 
+	"github.com/Dylan-Rinker/gh-ghas-viewer/ui"
+	"github.com/Dylan-Rinker/gh-ghas-viewer/ui/markdown"
+
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/muesli/termenv"
 )
