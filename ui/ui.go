@@ -1,29 +1,25 @@
 package ui
 
 import (
-	"fmt"
 	"strings"
 
-	"github.com/Dylan-Rinker/gh-ghas-viewer/ui/styles"
-	"github.com/charmbracelet/bubbles/help"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
 )
 
 type Model struct {
-	keys          keys.KeyMap
-	sidebar       sidebar.Model
-	prSidebar     prsidebar.Model
-	issueSidebar  issuesidebar.Model
-	currSectionId int
-	help          help.Model
-	alerts        []section.Section
-	ready         bool
-	isSidebarOpen bool
-	// tabs          tabs.Model
-	ctx context.ProgramContext
-	// taskSpinner   spinner.Model
-	tasks map[string]context.Task
+	// keys          keys.KeyMap
+	// sidebar       sidebar.Model
+	// prSidebar     prsidebar.Model
+	// issueSidebar  issuesidebar.Model
+	// currSectionId int
+	// help          help.Model
+	// alerts        []section.Section
+	// ready         bool
+	// isSidebarOpen bool
+	// // tabs          tabs.Model
+	// ctx context.ProgramContext
+	// // taskSpinner   spinner.Model
+	// tasks map[string]context.Task
 }
 
 func NewModel() Model {
@@ -81,34 +77,34 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m Model) View() string {
 	s := strings.Builder{}
 	// s.WriteString(m.tabs.View(m.ctx))
-	s.WriteString("\n")
-	mainContent := ""
+	s.WriteString("This is a test\n")
+	// mainContent := ""
 
-	mainContent = lipgloss.JoinHorizontal(
-		lipgloss.Top,
-		// m.getCurrSection().View(),
-		m.sidebar.View(),
-	)
+	// mainContent = lipgloss.JoinHorizontal(
+	// 	lipgloss.Top,
+	// m.getCurrSection().View(),
+	// 	m.sidebar.View(),
+	// )
 
-	s.WriteString(mainContent)
-	s.WriteString("\n")
+	// s.WriteString(mainContent)
+	// s.WriteString("\n")
 
-	if m.ctx.Error != nil {
-		s.WriteString(
-			styles.ErrorStyle.
-				Width(m.ctx.ScreenWidth).
-				Render(fmt.Sprintf("%s %s",
-					constants.FailureGlyph,
-					lipgloss.NewStyle().
-						Foreground(styles.DefaultTheme.WarningText).
-						Render(m.ctx.Error.Error()),
-				)),
-		)
-	} else if len(m.tasks) > 0 {
-		s.WriteString(m.renderRunningTask())
-	} else {
-		s.WriteString(m.help.View(m.ctx))
-	}
+	// if m.ctx.Error != nil {
+	// 	s.WriteString(
+	// 		styles.ErrorStyle.
+	// 			Width(m.ctx.ScreenWidth).
+	// 			Render(fmt.Sprintf("%s %s",
+	// 				constants.FailureGlyph,
+	// 				lipgloss.NewStyle().
+	// 					Foreground(styles.DefaultTheme.WarningText).
+	// 					Render(m.ctx.Error.Error()),
+	// 			)),
+	// 	)
+	// } else if len(m.tasks) > 0 {
+	// 	s.WriteString(m.renderRunningTask())
+	// } else {
+	// 	s.WriteString(m.help.View(m.ctx))
+	// }
 
 	return s.String()
 }
