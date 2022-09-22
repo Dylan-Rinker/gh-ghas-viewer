@@ -15,4 +15,24 @@ git commit -m 'init'
 
 Part 2
 
+gh repo create // Todo: Add full details for this command
 
+Part 3
+
+Create a codespace
+gh codespace create // Todo: Full instructions for creating the code space
+
+Configure the codespace
+
+CMD + Shift + P -> Codespace: Add Developement Container Configuration Files -> Select Go -> Select Appropriate Version -> Add GitHub CLI
+
+Create Post Create Commands for Building Application and Creating GitHub CLI Extension 
+
+In devcontainer.json add -> "postCreateCommand": "go build && gh extension install .",
+
+Now you can work on your project from any computer!
+
+
+Create Help Model
+
+Create help.go and styles.go in ui/components/help/

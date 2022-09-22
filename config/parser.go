@@ -92,8 +92,9 @@ type ThemeConfig struct {
 }
 
 type Config struct {
-	PRSections     []SectionConfig   `yaml:"prSections"`
-	IssuesSections []SectionConfig   `yaml:"issuesSections"`
+	// PRSections     []SectionConfig   `yaml:"prSections"`
+	// IssuesSections []SectionConfig   `yaml:"issuesSections"`
+	ResultsSection []SectionConfig   `yaml:"resultsSections"`
 	Defaults       Defaults          `yaml:"defaults"`
 	Keybindings    Keybindings       `yaml:"keybindings"`
 	RepoPaths      map[string]string `yaml:"repoPaths"`
@@ -120,34 +121,34 @@ func (parser ConfigParser) getDefaultConfig() Config {
 			IssuesLimit: 20,
 			View:        PRsView,
 		},
-		PRSections: []SectionConfig{
-			{
-				Title:   "My Pull Requests",
-				Filters: "is:open author:@me",
-			},
-			{
-				Title:   "Needs My Review",
-				Filters: "is:open review-requested:@me",
-			},
-			{
-				Title:   "Involved",
-				Filters: "is:open involves:@me -author:@me",
-			},
-		},
-		IssuesSections: []SectionConfig{
-			{
-				Title:   "My Issues",
-				Filters: "is:open author:@me",
-			},
-			{
-				Title:   "Assigned",
-				Filters: "is:open assignee:@me",
-			},
-			{
-				Title:   "Involved",
-				Filters: "is:open involves:@me -author:@me",
-			},
-		},
+		// PRSections: []SectionConfig{
+		// 	{
+		// 		Title:   "My Pull Requests",
+		// 		Filters: "is:open author:@me",
+		// 	},
+		// 	{
+		// 		Title:   "Needs My Review",
+		// 		Filters: "is:open review-requested:@me",
+		// 	},
+		// 	{
+		// 		Title:   "Involved",
+		// 		Filters: "is:open involves:@me -author:@me",
+		// 	},
+		// },
+		// IssuesSections: []SectionConfig{
+		// 	{
+		// 		Title:   "My Issues",
+		// 		Filters: "is:open author:@me",
+		// 	},
+		// 	{
+		// 		Title:   "Assigned",
+		// 		Filters: "is:open assignee:@me",
+		// 	},
+		// 	{
+		// 		Title:   "Involved",
+		// 		Filters: "is:open involves:@me -author:@me",
+		// 	},
+		// },
 		Keybindings: Keybindings{
 			Prs: []Keybinding{},
 		},
