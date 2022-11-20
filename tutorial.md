@@ -1,4 +1,4 @@
-Part 1
+**Part 1: Initilize a GH CLI Extension Project**
 
 Download the GitHub CLI and create a new go extension.
 
@@ -13,7 +13,7 @@ gh ghas-viewer
 git add .
 git commit -m 'init'
 
-Part 2
+**Part 2: Create a Remote Repo**
 
 gh repo create // Todo: Add full details for this command
 
@@ -21,9 +21,8 @@ git add .
 git commit -m 'init'
 git push --set-upstream origin main
 
-Part 3
+**Part 3: Create a Codespace**
 
-Create a codespace
 gh codespace create // Todo: Full instructions for creating the code space
 
 Configure the codespace
@@ -35,7 +34,6 @@ Create Post Create Commands for Building Application and Creating GitHub CLI Ext
 In devcontainer.json add -> "postCreateCommand": "go build && gh extension install .",
 
 Now you can work on your project from any computer!
-
 
 Create Help Model
 
