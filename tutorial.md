@@ -38,3 +38,14 @@ Now you can work on your project from any computer!
 Create Help Model
 
 Create help.go and styles.go in ui/components/help/
+
+Part X: Set up Security Features
+
+Dependabot Alerts
+Dependabot Security Updates
+Dependabot Version Updates
+
+Code Scanning
+Depdency Review
+
+
