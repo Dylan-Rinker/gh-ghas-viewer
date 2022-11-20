@@ -17,6 +17,10 @@ Part 2
 
 gh repo create // Todo: Add full details for this command
 
+git add .
+git commit -m 'init'
+git push --set-upstream origin main
+
 Part 3
 
 Create a codespace
